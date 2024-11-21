@@ -1,23 +1,3 @@
-local filetypes = {
-	"javascript",
-	"javascriptreact",
-	"typescript",
-	"typescriptreact",
-	"vue",
-	"css",
-	"scss",
-	"less",
-	"html",
-	"json",
-	"jsonc",
-	"yaml",
-	"markdown",
-	"markdown.mdx",
-	"graphql",
-	"handlebars",
-	"svelte",
-}
-
 return {
 	"nvimtools/none-ls.nvim",
 	dependencies = {
@@ -28,17 +8,10 @@ return {
 		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 		null_ls.setup({
 			sources = {
-				require("none-ls.code_actions.eslint_d").with({
-					filetypes,
-				}),
-				require("none-ls.diagnostics.eslint_d").with({
-					filetypes,
-				}),
-
+				require("none-ls.code_actions.eslint_d"),
+				require("none-ls.diagnostics.eslint_d"),
 				null_ls.builtins.formatting.stylua,
-				null_ls.builtins.formatting.prettier.with({
-					filetypes,
-				}),
+				null_ls.builtins.formatting.prettier,
 				null_ls.builtins.formatting.golines,
 			},
 			on_attach = function(client, bufnr)

@@ -66,7 +66,6 @@ return {
 	{
 		"sindrets/diffview.nvim",
 		config = function()
-			local actions = require("diffview.actions")
 			require("diffview").setup()
 			vim.keymap.set("n", "<leader>gd", ":DiffviewOpen<CR>", {})
 		end,
